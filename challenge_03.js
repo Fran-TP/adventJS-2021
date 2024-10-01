@@ -1,22 +1,20 @@
 export default function isValid(letter) {
-  const match = letter.match(/\([\wáéíóúñ]*\)*/g)
+  if (letter.includes('{') || letter.includes('[')) return false
+
+  const toArray = [...letter]
   const stack = []
 
-  for (const item of match) {
-    if (item.includes('{') || item.includes('[')) {
+  for (let i = 0; i < toArray.length; i++) {
+    const elm = toArray[i]
+
+    if (elm === '(' && toArray[i + 1] === ')') {
       return false
     }
 
-    if (!/[a-záéíóúñ]+/gi.test(item)) {
-      return false
-    }
-
-    for (let i = 0; i < item.length; i++) {
-      if (item[i] == '(') {
-        stack.push(item[i])
-      } else if (item[i] === ')') {
-        stack.pop()
-      }
+    if (elm === '(') {
+      stack.push(elm)
+    } else if (elm === ')') {
+      stack.pop()
     }
   }
 
