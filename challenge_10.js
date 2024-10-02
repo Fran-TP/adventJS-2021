@@ -1,17 +1,10 @@
 export default function getCoins(change) {
   const coins = [50, 20, 10, 5, 2, 1]
-  const toArray = []
+  const resultArray = []
   for (const coin of coins) {
-    const rest = change % coin
-
-    if (rest !== change) {
-      const contain = Math.floor(change / coin)
-      change = rest
-      toArray.unshift(contain)
-    } else {
-      toArray.unshift(0)
-    }
+    resultArray.unshift(Math.floor(change / coin))
+    change %= coin
   }
 
-  return toArray
+  return resultArray
 }
