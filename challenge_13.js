@@ -1,12 +1,11 @@
 const wrapGifts = gifts => {
-  const len = gifts.length + 2
-  const arr = Array.from({ length: len }, (_, idx) => {
-    return idx === 0 || idx === len - 1
-      ? '*'.repeat(gifts[0].length + 2)
-      : `*${gifts[idx - 1]}*`
-  })
+  if (gifts.length === 0) return []
 
-  return arr
+  const giftLength = gifts[0].length
+  const border = '*'.repeat(giftLength + 2)
+  const wrappedGifts = gifts.map(gift => `*${gift}*`)
+
+  return [border, ...wrappedGifts, border]
 }
 console.log(wrapGifts(['📷', '⚽️']))
 console.log(wrapGifts(['🏈🎸', '🎮🧸']))
