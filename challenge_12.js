@@ -5,16 +5,13 @@
  * @returns {number} The minimum jump length required to avoid all obstacles.
  */
 const getMinJump = obstacles => {
-  // Create an array where each index represents a position, and the value is 1 if there's an obstacle, 0 otherwise
-  const arr = Array.from({ length: Math.max(...obstacles) + 1 }, (_, idx) =>
-    obstacles.includes(idx) ? 1 : 0
-  )
-
+  const len = Math.max(...obstacles) + 1
   let increment = 1
+
   // Iterate through the array with steps of 'increment'
-  for (var i = 0; i <= arr.length; i += increment) {
+  for (var i = 0; i <= len; i += increment) {
     // If an obstacle is found at the current position
-    if (arr[i] === 1) {
+    if (obstacles.includes(i)) {
       // Reset the position and increase the jump length
       i = 0
       increment++
