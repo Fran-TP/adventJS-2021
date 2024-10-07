@@ -8,11 +8,8 @@ const getMinJump = obstacles => {
   const len = Math.max(...obstacles) + 1
   let increment = 1
 
-  // Iterate through the array with steps of 'increment'
-  for (var i = 0; i <= len; i += increment) {
-    // If an obstacle is found at the current position
+  for (let i = 0; i <= len; i += increment) {
     if (obstacles.includes(i)) {
-      // Reset the position and increase the jump length
       i = 0
       increment++
     }

@@ -1,6 +1,6 @@
 export default function createXmasTree(height) {
   let tree = ''
-  let trunk = `${'_'.repeat(height - 1)}#${'_'.repeat(height - 1)}`
+  const trunk = `${'_'.repeat(height - 1)}#${'_'.repeat(height - 1)}`
   for (let i = 1; i <= height; i++) {
     tree += `${'_'.repeat(height - (i - 1) - 1)}${'*'.repeat(
       2 * i - 1

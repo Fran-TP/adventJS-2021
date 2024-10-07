@@ -1,5 +1,5 @@
 const groupBy = (collection, it) => {
-  let object = {}
+  const object = {}
   const cb = typeof it === 'function' ? it : v => v[it]
 
   for (const item of collection) {
@@ -28,7 +28,7 @@ console.log(
     [
       { title: 'JavaScript: The Good Parts', rating: 8 },
       { title: 'Aprendiendo Git', rating: 10 },
-      { title: 'Clean Code', rating: 9 },
+      { title: 'Clean Code', rating: 9 }
     ],
     'rating'
   )

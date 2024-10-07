@@ -1,30 +1,4 @@
-const checkSledJump = heights => {
-  const maxHeight = Math.max(...heights)
-  const idxOfMax = heights.indexOf(maxHeight)
-  let prev = heights[0]
-
-  if (idxOfMax === heights.length - 1) return false
-
-  for (let i = 1; i < heights.length; i++) {
-    const curr = heights[i]
-
-    if (i < idxOfMax) {
-      if (prev - curr >= 0) {
-        return false
-      }
-    }
-
-    if (i > idxOfMax) {
-      if (prev - curr < 0) {
-        return false
-      }
-    }
-
-    prev = curr
-  }
-
-  return true
-}
+const checkSledJump = heights => {}
 
 console.log(checkSledJump([1, 2, 3, 2, 1])) // true: sube y baja de forma estricta
 console.log(checkSledJump([0, 1, 0])) // -> true: sube y baja de forma estricta

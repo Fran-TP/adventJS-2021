@@ -19,17 +19,17 @@ const products = {
   computers: {
     laptops: {
       macbook: 'macbook',
-      chromebook: 'chromebook',
+      chromebook: 'chromebook'
     },
     desktops: {
       imac: 'imac',
-      mac: 'mac',
-    },
+      mac: 'mac'
+    }
   },
   phones: {
     android: 'android',
-    iphone: 'iphone',
-  },
+    iphone: 'iphone'
+  }
 }
 
 console.log(contains(products, 'macbook')) // true
