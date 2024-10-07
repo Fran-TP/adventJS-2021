@@ -1,5 +1,10 @@
+/**
+ * Decodes a string of symbols into a number based on predefined symbol values.
+ *
+ * @param {string} symbols - A string of symbols to decode.
+ * @returns {number} The decoded number, or NaN if any symbol is undefined.
+ */
 const decodeNumbers = symbols => {
-  const symbolArray = [...symbols]
   const symbolValueMap = {
     '.': 1,
     ',': 5,
@@ -8,17 +13,13 @@ const decodeNumbers = symbols => {
     '!': 100
   }
 
-  const areAllValuesDefined = symbolArray.every(
-    symbol => typeof symbolValueMap[symbol] !== 'undefined'
-  )
-
-  if (!areAllValuesDefined) return Number.NaN
-
   let result = 0
 
-  for (let i = 0; i < symbolArray.length; i++) {
-    const curr = symbolValueMap[symbolArray[i]]
-    const next = symbolValueMap[symbolArray[i + 1]]
+  for (let i = 0; i < symbols.length; i++) {
+    const curr = symbolValueMap[symbols[i]]
+    const next = symbolValueMap[symbols[i + 1]]
+
+    if (typeof curr === 'undefined') return Number.NaN
 
     result += curr < next ? -curr : curr
   }
