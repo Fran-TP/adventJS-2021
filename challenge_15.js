@@ -1,4 +1,22 @@
-const checkSledJump = heights => {}
+const checkSledJump = heights => {
+  const n = heights.length
+
+  if (n < 3) return false
+
+  let i = 0
+
+  while (i < n - 1 && heights[i] < heights[i + 1]) {
+    i++
+  }
+
+  if (i === 0 || i === n - 1) return false
+
+  while (i < n - 1 && heights[i] > heights[i + 1]) {
+    i++
+  }
+
+  return i === n - 1
+}
 
 console.log(checkSledJump([1, 2, 3, 2, 1])) // true: sube y baja de forma estricta
 console.log(checkSledJump([0, 1, 0])) // -> true: sube y baja de forma estricta
