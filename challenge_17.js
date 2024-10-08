@@ -1,17 +1,27 @@
+/**
+ * Counts the total number of packages for a carrier and its subordinates.
+ *
+ * @param {Array} carriers - An array of carriers, each represented by an array with the carrier ID, number of packages, and subordinates.
+ * @param {string} carrierID - The ID of the carrier to start counting from.
+ * @returns {number} The total number of packages for the carrier and its subordinates.
+ */
 const countPackages = (carriers, carrierID) => {
-  const carrier = carriers.find(([id]) => id === carrierID)
+  const carrierMap = new Map(
+    carriers.map(([id, packages, subordinates]) => [
+      id,
+      { packages, subordinates }
+    ])
+  )
 
-  if (!carrier) return 0
+  const count = id => {
+    const carrier = carrierMap.get(id)
+    if (!carrier) return 0
 
-  const [_, packages, subordinates] = carrier
-
-  let totalPackages = packages
-
-  for (const subordinate of subordinates) {
-    totalPackages += countPackages(carriers, subordinate)
+    const { packages, subordinates } = carrier
+    return packages + subordinates.reduce((total, sub) => total + count(sub), 0)
   }
 
-  return totalPackages
+  return count(carrierID)
 }
 
 // test
