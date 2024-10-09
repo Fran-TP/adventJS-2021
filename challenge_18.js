@@ -1,3 +1,10 @@
+/**
+ * Fixes file names by appending a count to duplicate names.
+ *
+ * @param {string[]} files - An array of file names.
+ * @returns {string[]} An array of fixed file names with counts appended to duplicates.
+ */
+
 const fixFiles = files => {
   const filesMap = new Map()
 
