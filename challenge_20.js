@@ -1,3 +1,9 @@
+/**
+ * Checks if a given letter is a pangram in Spanish.
+ *
+ * @param {string} letter - The letter to check.
+ * @returns {boolean} True if the letter is a pangram, false otherwise.
+ */
 const pangram = letter => {
   const SPANISH_SIZE_PANGRAM = 27
   const pangramRange = /[a-z\u00C0-\u017E]/gi
@@ -10,11 +16,15 @@ const pangram = letter => {
   }
 
   const matchPangramChars = letter.toLowerCase().match(pangramRange)
-  const normalizedChars = matchPangramChars.map(char =>
-    typeof accentMap[char] === 'undefined' ? char : accentMap[char]
-  )
+  if (!matchPangramChars) return false
 
-  return new Set(normalizedChars).size === SPANISH_SIZE_PANGRAM
+  const uniqueChars = new Set()
+
+  for (const char of matchPangramChars) {
+    uniqueChars.add(accentMap[char] || char)
+  }
+
+  return uniqueChars.size === SPANISH_SIZE_PANGRAM
 }
 
 // test
