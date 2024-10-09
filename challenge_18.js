@@ -1,23 +1,19 @@
 const fixFiles = files => {
-  const occurrenceMap = files.reduce((acc, curr, idx) => {
-    acc[curr] ??= { occurrenceIndexes: [] }
-    acc[curr] = {
-      occurrenceIndexes: [...acc[curr].occurrenceIndexes, idx]
+  const filesMap = new Map()
+  const result = []
+
+  for (const file of files) {
+    if (!filesMap.has(file)) {
+      filesMap.set(file, 0)
+      result.push(file)
+    } else {
+      const count = filesMap.get(file) + 1
+      const fileName = `${file}(${count})`
+
+      filesMap.set(file, count)
+      result.push(fileName)
     }
-
-    return acc
-  }, {})
-
-  const result = Object.entries(occurrenceMap)
-    .flatMap(([key, { occurrenceIndexes }]) =>
-      occurrenceIndexes.map((index, selfIdx) =>
-        selfIdx === 0
-          ? { file: key, index }
-          : { file: `${key}(${selfIdx})`, index }
-      )
-    )
-    .sort(({ index: a }, { index: b }) => a - b)
-    .map(({ file }) => file)
+  }
 
   return result
 }
