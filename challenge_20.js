@@ -5,7 +5,7 @@
  * @returns {boolean} True if the letter is a pangram, false otherwise.
  */
 const pangram = letter => {
-  const SPANISH_SIZE_PANGRAM = 27
+  const SPANISH_ALPHABET_SIZE = 27
   const pangramRange = /[a-z\u00C0-\u017E]/gi
   const accentMap = {
     á: 'a',
@@ -24,7 +24,7 @@ const pangram = letter => {
     uniqueChars.add(accentMap[char] || char)
   }
 
-  return uniqueChars.size === SPANISH_SIZE_PANGRAM
+  return uniqueChars.size === SPANISH_ALPHABET_SIZE
 }
 
 // test
