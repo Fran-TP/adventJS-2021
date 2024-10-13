@@ -29,6 +29,8 @@ const checkSledJump = heights => {
   return peakFound
 }
 
+// test
+
 console.log(checkSledJump([1, 2, 3, 2, 1])) // -> true
 console.log(checkSledJump([0, 1, 0])) // -> true
 console.log(checkSledJump([0, 3, 2, 1])) // -> true

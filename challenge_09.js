@@ -1,3 +1,12 @@
+/**
+ * Groups the elements of a collection by a specified criterion.
+ *
+ * @param {Array} collection - The array of elements to be grouped.
+ * @param {Function|string} it - The criterion by which to group the elements.
+ *                               If a function is provided, it will be used to determine the group key for each element.
+ *                               If a string is provided, it will be used as the key to group by the property of each element.
+ * @returns {Object} An object where the keys are the group identifiers and the values are arrays of elements that belong to each group.
+ */
 const groupBy = (collection, it) => {
   const object = {}
   const cb = typeof it === 'function' ? it : v => v[it]

@@ -11,6 +11,8 @@ const missingReindeer = ids => {
   return expectedSum - actualSum
 }
 
+// test
+
 console.log(missingReindeer([0, 2, 3])) // -> 1
 console.log(missingReindeer([5, 6, 1, 2, 3, 7, 0])) // -> 4
 console.log(missingReindeer([0, 1])) // -> 2 (¡es el último el que falta!)

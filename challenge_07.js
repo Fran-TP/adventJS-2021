@@ -1,3 +1,10 @@
+/**
+ * Recursively checks if a given product is contained within an object.
+ *
+ * @param {Object} object - The object to search within.
+ * @param {string} productToFind - The product to search for.
+ * @returns {boolean} - Returns true if the product is found, otherwise false.
+ */
 const contains = (object, productToFind) => {
   for (const key in object) {
     const value = object[key]

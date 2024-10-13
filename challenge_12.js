@@ -18,6 +18,8 @@ const getMinJump = obstacles => {
   return increment
 }
 
+// test
+
 console.log(getMinJump([5, 3, 6, 7, 9])) // -> 4
 console.log(getMinJump([2, 4, 6, 8, 10])) // -> 7
 console.log(getMinJump([1, 2, 3, 5])) // -> 4

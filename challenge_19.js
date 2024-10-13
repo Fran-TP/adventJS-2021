@@ -1,3 +1,10 @@
+/**
+ * Finds the best pair of courses that can be taken within the given time.
+ *
+ * @param {number} time - The total available time to take courses.
+ * @param {number[]} courses - An array of course durations.
+ * @returns {number[]|null} - An array containing the indices of the two courses that best fit the available time, or null if no valid pair is found.
+ */
 const learn = (time, courses) => {
   let bestPair = null
   let maxTimeUsed = 0
