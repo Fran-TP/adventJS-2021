@@ -1,27 +1,19 @@
+/**
+ * Checks if two binary trees are the same.
+ *
+ * @param {Object} treeA - The root node of the first binary tree.
+ * @param {Object} treeB - The root node of the second binary tree.
+ * @returns {boolean} True if the two binary trees are the same, false otherwise.
+ */
 const checkIsSameTree = (treeA, treeB) => {
+  if (treeA === null && treeB === null) return true
   if (treeA === null || treeB === null) return false
+  if (treeA.value !== treeB.value) return false
 
-  const queueA = [treeA]
-  const queueB = [treeB]
-
-  while (queueA.length > 0) {
-    const nodeA = queueA.shift()
-    const nodeB = queueB.shift()
-
-    if (nodeA.value !== nodeB.value) return false
-
-    if (nodeA.left !== null && nodeB.left !== null) {
-      queueA.push(nodeA.left)
-      queueB.push(nodeB.left)
-    }
-
-    if (nodeA.right !== null && nodeB.right !== null) {
-      queueA.push(nodeA.right)
-      queueB.push(nodeB.right)
-    }
-  }
-
-  return true
+  return (
+    checkIsSameTree(treeA.left, treeB.left) &&
+    checkIsSameTree(treeA.right, treeB.right)
+  )
 }
 
 // test
