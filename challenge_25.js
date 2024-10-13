@@ -1,11 +1,19 @@
+/**
+ * Checks if the mouse can eat the cheese in the given direction.
+ *
+ * @param {string} direction - The direction in which the mouse moves ('up', 'down', 'left', 'right').
+ * @param {Array<Array<string>>} game - The game board represented as a 2D array.
+ * @returns {boolean} True if the mouse can eat the cheese in the given direction, false otherwise.
+ */
 const canMouseEat = (direction, game) => {
-  let position = null
   const directionMap = {
-    up: -1,
-    down: 1,
-    right: 1,
-    left: -1
+    up: { y: -1, x: 0 },
+    down: { y: 1, x: 0 },
+    left: { y: 0, x: -1 },
+    right: { y: 0, x: 1 }
   }
+
+  let position = null
 
   for (let y = 0; y < game.length; y++) {
     for (let x = 0; x < game[y].length; x++) {
@@ -14,20 +22,14 @@ const canMouseEat = (direction, game) => {
         break
       }
     }
+    if (position) break
   }
 
-  let newPosition = null
+  if (!position) return false
 
-  if (direction === 'up' || direction === 'down') {
-    newPosition = {
-      y: position.y + directionMap[direction],
-      x: position.x
-    }
-  } else {
-    newPosition = {
-      y: position.y,
-      x: position.x + directionMap[direction]
-    }
+  const newPosition = {
+    y: position.y + directionMap[direction].y,
+    x: position.x + directionMap[direction].x
   }
 
   if (
@@ -42,6 +44,7 @@ const canMouseEat = (direction, game) => {
   return game[newPosition.y][newPosition.x] === '*'
 }
 
+// test
 const room = [
   ['1', '2', '3'],
   ['4', '5', 'm'],
